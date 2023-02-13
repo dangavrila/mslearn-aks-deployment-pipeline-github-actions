@@ -26,9 +26,9 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v2.1.0
         with:
-          registry: ${{ secretes.ACR_NAME }}
-          username: ${{ secretes.ACR_LOGIN }}
-          password: ${{ secretes.ACR_PASSWORD }}
+          registry: ${{ secrets.ACR_NAME }}
+          username: ${{ secrets.ACR_LOGIN }}
+          password: ${{ secrets.ACR_PASSWORD }}
           
       - name: Build and push staging images
         uses: docker/build-push-action@v4.0.0
@@ -36,5 +36,5 @@ jobs:
           context: .
           # Push is a shorthand for --output=type=registry
           push: true
-          tags: ${{ secretes.ACR_NAME }}/contoso-website:latest
+          tags: ${{ secrets.ACR_NAME }}/contoso-website:latest
           
